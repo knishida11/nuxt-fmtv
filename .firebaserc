@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "nuxt-fmtv",
+    "default": "nuxt-fmtv"
+  }
+}
