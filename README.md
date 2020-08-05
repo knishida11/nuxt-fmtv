@@ -3,7 +3,7 @@
 
 ## URL
 
-https://nuxt-fmtv.web.app/watch
+https://nuxt-fmtv.web.app/
 
 ## Stack
 
@@ -21,4 +21,4 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(Google認証)
 Nuxt.jsとFirebaseを使用して作成されています。
 このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。
-残念ながら日本語検索には非対応です。
+日本語検索には非対応です。
