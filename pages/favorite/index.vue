@@ -9,6 +9,9 @@
           <th class="text-left">
             IMDb
           </th>
+          <th class="text-left">
+            Delete
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +38,11 @@
               <v-icon>mdi-checkbox-multiple-blank-outline</v-icon>
             </a>
           </td>
+          <td>
+            <v-icon @click="removeFromFavorite(movie.imdbID)">
+              mdi-trash-can-outline
+            </v-icon>
+          </td>
         </tr>
       </tbody>
     </template>
@@ -42,7 +50,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Favorite',
@@ -72,6 +80,9 @@ export default {
   },
   beforeDestroy() {
     this.unsubscribe()
+  },
+  methods: {
+    ...mapActions(['removeFromFavorite']),
   },
 }
 </script>
