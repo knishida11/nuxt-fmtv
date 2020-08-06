@@ -22,3 +22,17 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 Nuxt.jsとFirebaseを使用して作成されています。
 このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。
 日本語検索には非対応です。
+
+## Features
+
+### Search
+You can get movies and TV shows information from [IMDb](https://www.imdb.com/)
+[IMDb](https://www.imdb.com/)から映画やTVショーの情報を取得することができます。
+
+### Favorite
+You can make a list for your favorite movies and TV shows
+あなたの好きな映画やTVショーのリストを作ることができます。
+
+### Watchlist
+You can make a list of movies and TVshows you want to watch
+あなたの観たい映画やTVショーのリストを作ることができます。
