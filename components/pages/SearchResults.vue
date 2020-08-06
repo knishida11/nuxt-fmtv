@@ -16,11 +16,13 @@
             :src="movie.Poster"
           />
           <LikeButton
+            v-if="user"
             class="like_button"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
           />
           <WatchlistButton
+            v-if="user"
             class="watch_button"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
@@ -53,6 +55,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import LikeButton from '~/components/ui/LikeButton.vue'
 import WatchlistButton from '~/components/ui/WatchlistButton.vue'
 export default {
@@ -65,6 +68,9 @@ export default {
       type: Array,
       default: null,
     },
+  },
+  computed: {
+    ...mapGetters(['user']),
   },
 }
 </script>
