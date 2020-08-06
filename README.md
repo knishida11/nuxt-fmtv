@@ -19,8 +19,7 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 
 このアプリでは映画情報を[IMDb](https://www.imdb.com/)から検索することができ、<br>
 また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(Google認証)<br>
-Nuxt.jsとFirebaseを使用して作成されています。<br>
-このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。<br>
+このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) と [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。<br>
 日本語検索には非対応です。
 
 ## Features
