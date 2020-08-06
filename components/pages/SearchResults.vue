@@ -8,7 +8,7 @@
       md="3"
       class="d-flex"
     >
-      <v-card class="mx-auto">
+      <v-card class="mx-auto movie_card">
         <div class="card_upper_part">
           <v-img
             class="white--text align-end"
@@ -76,6 +76,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.movie_card
+  width: auto
+
+  @media (min-width: 600px)
+    width: 100%
+
 .card_upper_part
   position: relative
 
