@@ -15,24 +15,24 @@ https://nuxt-fmtv.web.app/
 
 It's a Movie and TV shows tracker app with Nuxt.js and Firebase.
 You can fetch movies & TV shows data from [IMDb](https://www.imdb.com/), and save them into your list.(Google Authentication)
-This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)
+This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info).
 
-このアプリでは映画情報を[IMDb](https://www.imdb.com/)から検索することができ、
-また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(Google認証)
-Nuxt.jsとFirebaseを使用して作成されています。
-このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。
+このアプリでは映画情報を[IMDb](https://www.imdb.com/)から検索することができ、<br>
+また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(Google認証)<br>
+Nuxt.jsとFirebaseを使用して作成されています。<br>
+このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。<br>
 日本語検索には非対応です。
 
 ## Features
 
 ### Search
-You can get movies and TV shows information from [IMDb](https://www.imdb.com/)
+You can get movies and TV shows information from [IMDb](https://www.imdb.com/)<br>
 [IMDb](https://www.imdb.com/)から映画やTVショーの情報を取得することができます。
 
 ### Favorite
-You can make a list for your favorite movies and TV shows
+You can make a list for your favorite movies and TV shows<br>
 あなたの好きな映画やTVショーのリストを作ることができます。
 
 ### Watchlist
-You can make a list of movies and TVshows you want to watch
+You can make a list of movies and TVshows you want to watch<br>
 あなたの観たい映画やTVショーのリストを作ることができます。
