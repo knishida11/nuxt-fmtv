@@ -2,6 +2,7 @@
   <span>
     <v-btn
       v-if="!isLiked"
+      small
       @click="
         like({
           id: imdbID,
@@ -12,7 +13,7 @@
       <slot name="like" />
       <v-icon>mdi-heart-outline</v-icon>
     </v-btn>
-    <v-btn v-else @click="unLike(imdbID)">
+    <v-btn v-else small @click="unLike(imdbID)">
       <slot name="liked" />
       <v-icon>mdi-heart</v-icon>
     </v-btn>

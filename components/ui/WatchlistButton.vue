@@ -2,6 +2,7 @@
   <span>
     <v-btn
       v-if="!isWatchlisted"
+      small
       @click="
         watchlist({
           id: imdbID,
@@ -12,7 +13,7 @@
       <slot name="watchlist" />
       <v-icon>mdi-eye-outline</v-icon>
     </v-btn>
-    <v-btn v-else @click="unWatchlist(imdbID)">
+    <v-btn v-else small @click="unWatchlist(imdbID)">
       <slot name="watchlisted" />
       <v-icon>mdi-eye</v-icon>
     </v-btn>
