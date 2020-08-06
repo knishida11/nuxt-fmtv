@@ -15,13 +15,13 @@
             height="400"
             :src="movie.Poster"
           />
-          <LikeButton
+          <like-button
             v-if="user"
             class="like_button"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
           />
-          <WatchlistButton
+          <watchlist-button
             v-if="user"
             class="watch_button"
             :title="movie.Title"
