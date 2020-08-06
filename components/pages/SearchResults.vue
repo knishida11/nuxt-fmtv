@@ -9,7 +9,23 @@
       class="d-flex"
     >
       <v-card class="mx-auto movie_card">
-        <v-img class="white--text align-end" height="400" :src="movie.Poster" />
+        <div class="card_upper_part">
+          <v-img
+            class="white--text align-end"
+            height="400"
+            :src="movie.Poster"
+          />
+          <LikeButton
+            class="like_button"
+            :title="movie.Title"
+            :imdb-i-d="movie.imdbID"
+          />
+          <WatchlistButton
+            class="watch_button"
+            :title="movie.Title"
+            :imdb-i-d="movie.imdbID"
+          />
+        </div>
         <div class="text-center">
           <nuxt-link
             :to="{
@@ -37,7 +53,13 @@
 </template>
 
 <script>
+import LikeButton from '~/components/ui/LikeButton.vue'
+import WatchlistButton from '~/components/ui/WatchlistButton.vue'
 export default {
+  components: {
+    LikeButton,
+    WatchlistButton,
+  },
   props: {
     searchResults: {
       type: Array,
@@ -46,3 +68,18 @@ export default {
   },
 }
 </script>
+
+<style lang="sass" scoped>
+.card_upper_part
+  position: relative
+
+.like_button
+  position: absolute
+  bottom: 2%
+  right: 24%
+
+.watch_button
+  position: absolute
+  bottom: 2%
+  right: 3%
+</style>

@@ -4,40 +4,22 @@
       <v-col cols="12" sm="4" class="text-center">
         <img :src="movie.Poster" />
         <div v-if="user" class="mt-1">
-          <v-btn
-            v-if="!isLiked"
-            class="ml-2"
-            @click="
-              like({
-                id: movie.imdbID,
-                title: movie.Title,
-              })
-            "
-          >
-            Like
-            <v-icon>mdi-heart-outline</v-icon>
-          </v-btn>
-          <v-btn v-else class="ml-2" @click="unLike(movie.imdbID)">
-            Liked
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn
-            v-if="!isWatchlisted"
-            class="ml-2"
-            @click="
-              watchlist({
-                id: movie.imdbID,
-                title: movie.Title,
-              })
-            "
-          >
-            Watchlist
-            <v-icon>mdi-eye-outline</v-icon>
-          </v-btn>
-          <v-btn v-else class="ml-2" @click="unWatchlist(movie.imdbID)">
-            Watchlisted
-            <v-icon>mdi-eye</v-icon>
-          </v-btn>
+          <like-button :title="movie.Title" :imdb-i-d="movie.imdbID">
+            <template v-slot:like>
+              Like
+            </template>
+            <template v-slot:liked>
+              Liked
+            </template>
+          </like-button>
+          <watchlist-button :title="movie.Title" :imdb-i-d="movie.imdbID">
+            <template v-slot:watchlist>
+              Watchlist
+            </template>
+            <template v-slot:watchlisted>
+              Watchlisted
+            </template>
+          </watchlist-button>
         </div>
       </v-col>
       <v-col cols="12" sm="8">
@@ -107,13 +89,19 @@
 
 <script>
 import axios from 'axios'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+import LikeButton from '~/components/ui/LikeButton.vue'
+import WatchlistButton from '~/components/ui/WatchlistButton'
+
 export default {
   name: 'Details',
+  components: {
+    LikeButton,
+    WatchlistButton,
+  },
   data() {
     return {
       movie: null,
-      isLiked: false,
       isWatchlisted: false,
     }
   },
@@ -125,48 +113,12 @@ export default {
     this.fetchMovieData(this.$route.params.id)
   },
   methods: {
-    ...mapActions([
-      'addToFavorite',
-      'removeFromFavorite',
-      'addToWatchlist',
-      'removeFromWatchlist',
-    ]),
-    like(id) {
-      this.addToFavorite(id)
-      this.isLiked = true
-    },
-    unLike(id) {
-      this.removeFromFavorite(id)
-      this.isLiked = false
-    },
-    watchlist(id) {
-      this.addToWatchlist(id)
-      this.isWatchlisted = true
-    },
-    unWatchlist(id) {
-      this.removeFromWatchlist(id)
-      this.isWatchlisted = false
-    },
     async fetchMovieData(id) {
       try {
         const res = await axios.get(
           `https://www.omdbapi.com/?apikey=${this.apiKey}&i=${id}`
         )
         this.movie = res.data
-        this.$fireStore
-          .collection(`users/${this.user.uid}/favorite`)
-          .doc(this.movie.imdbID)
-          .get()
-          .then((doc) => {
-            this.isLiked = doc.exists
-          })
-        this.$fireStore
-          .collection(`users/${this.user.uid}/watch`)
-          .doc(this.movie.imdbID)
-          .get()
-          .then((doc) => {
-            this.isWatchlisted = doc.exists
-          })
       } catch (err) {
         console.log(err)
       }
