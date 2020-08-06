@@ -145,7 +145,7 @@ export default {
     },
     unWatchlist(id) {
       this.removeFromWatchlist(id)
-      this.isWatchlisted = true
+      this.isWatchlisted = false
     },
     async fetchMovieData(id) {
       try {
