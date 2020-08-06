@@ -4,15 +4,15 @@
       v-if="!isLiked"
       @click="
         like({
-          id: movie.imdbID,
-          title: movie.Title,
+          id: imdbID,
+          title: title,
         })
       "
     >
       <slot name="like" />
       <v-icon>mdi-heart-outline</v-icon>
     </v-btn>
-    <v-btn v-else @click="unLike(movie.imdbID)">
+    <v-btn v-else @click="unLike(imdbID)">
       <slot name="liked" />
       <v-icon>mdi-heart</v-icon>
     </v-btn>
@@ -20,28 +20,45 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'FavoriteButton',
   props: {
-    movie: {
-      type: Object,
+    imdbID: {
+      type: String,
       default: null,
     },
-    isLiked: {
-      type: Boolean,
+    title: {
+      type: String,
       default: null,
     },
+  },
+  data() {
+    return {
+      isLiked: null,
+    }
+  },
+  computed: {
+    ...mapGetters(['user']),
+  },
+  created() {
+    this.$fireStore
+      .collection(`users/${this.user.uid}/favorite`)
+      .doc(this.imdbID)
+      .get()
+      .then((doc) => {
+        this.isLiked = doc.exists
+      })
   },
   methods: {
     ...mapActions(['addToFavorite', 'removeFromFavorite']),
     like(id) {
       this.addToFavorite(id)
-      this.$emit('isLiked', true)
+      this.isLiked = true
     },
     unLike(id) {
       this.removeFromFavorite(id)
-      this.$emit('isLiked', false)
+      this.isLiked = false
     },
   },
 }

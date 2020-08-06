@@ -4,11 +4,7 @@
       <v-col cols="12" sm="4" class="text-center">
         <img :src="movie.Poster" />
         <div v-if="user" class="mt-1">
-          <like-button
-            :is-liked="isLiked"
-            :movie="movie"
-            @isLiked="isLiked = $event"
-          >
+          <like-button :title="movie.Title" :imdb-i-d="movie.imdbID">
             <template v-slot:like>
               Like
             </template>
@@ -16,11 +12,7 @@
               Liked
             </template>
           </like-button>
-          <watchlist-button
-            :is-watchlisted="isWatchlisted"
-            :movie="movie"
-            @isWatchlisted="isWatchlisted = $event"
-          >
+          <watchlist-button :title="movie.Title" :imdb-i-d="movie.imdbID">
             <template v-slot:watchlist>
               Watchlist
             </template>
@@ -110,7 +102,6 @@ export default {
   data() {
     return {
       movie: null,
-      isLiked: false,
       isWatchlisted: false,
     }
   },
@@ -128,20 +119,6 @@ export default {
           `https://www.omdbapi.com/?apikey=${this.apiKey}&i=${id}`
         )
         this.movie = res.data
-        this.$fireStore
-          .collection(`users/${this.user.uid}/favorite`)
-          .doc(this.movie.imdbID)
-          .get()
-          .then((doc) => {
-            this.isLiked = doc.exists
-          })
-        this.$fireStore
-          .collection(`users/${this.user.uid}/watch`)
-          .doc(this.movie.imdbID)
-          .get()
-          .then((doc) => {
-            this.isWatchlisted = doc.exists
-          })
       } catch (err) {
         console.log(err)
       }

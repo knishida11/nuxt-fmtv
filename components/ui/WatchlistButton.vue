@@ -4,15 +4,15 @@
       v-if="!isWatchlisted"
       @click="
         watchlist({
-          id: movie.imdbID,
-          title: movie.Title,
+          id: imdbID,
+          title: title,
         })
       "
     >
       <slot name="watchlist" />
       <v-icon>mdi-eye-outline</v-icon>
     </v-btn>
-    <v-btn v-else @click="unWatchlist(movie.imdbID)">
+    <v-btn v-else @click="unWatchlist(imdbID)">
       <slot name="watchlisted" />
       <v-icon>mdi-eye</v-icon>
     </v-btn>
@@ -20,28 +20,45 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'WatchlistButton',
   props: {
-    movie: {
-      type: Object,
+    imdbID: {
+      type: String,
       default: null,
     },
-    isWatchlisted: {
-      type: Boolean,
+    title: {
+      type: String,
       default: null,
     },
+  },
+  data() {
+    return {
+      isWatchlisted: null,
+    }
+  },
+  computed: {
+    ...mapGetters(['user']),
+  },
+  created() {
+    this.$fireStore
+      .collection(`users/${this.user.uid}/watch`)
+      .doc(this.imdbID)
+      .get()
+      .then((doc) => {
+        this.isWatchlisted = doc.exists
+      })
   },
   methods: {
     ...mapActions(['addToWatchlist', 'removeFromWatchlist']),
     watchlist(id) {
       this.addToWatchlist(id)
-      this.$emit('isWatchlisted', true)
+      this.isWatchlisted = true
     },
     unWatchlist(id) {
       this.removeFromWatchlist(id)
-      this.$emit('isWatchlisted', false)
+      this.isWatchlisted = false
     },
   },
 }
