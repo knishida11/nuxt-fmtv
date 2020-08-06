@@ -19,8 +19,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import LoggedIn from '~/components/header/LoggedIn.vue'
-import NotLoggedIn from '~/components/header/NotLoggedIn.vue'
+import LoggedIn from '~/components/layouts/LoggedIn.vue'
+import NotLoggedIn from '~/components/layouts/NotLoggedIn.vue'
 export default {
   name: 'Header',
   components: {

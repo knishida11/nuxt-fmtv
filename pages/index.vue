@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import SearchBar from '~/components/index/SearchBar.vue'
-import SearchResults from '~/components/index/SearchResults.vue'
+import SearchBar from '~/components/pages/SearchBar.vue'
+import SearchResults from '~/components/pages/SearchResults.vue'
 export default {
   name: 'Home',
   components: {
