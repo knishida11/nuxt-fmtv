@@ -25,11 +25,3 @@ export default {
   },
 }
 </script>
-
-<style lang="sass" scoped>
-.movie_card
-  width: 95%
-
-  @media (min-width: 600px)
-    width: 100%
-</style>

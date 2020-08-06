@@ -8,7 +8,7 @@
       md="3"
       class="d-flex"
     >
-      <v-card class="mx-auto movie_card">
+      <v-card class="mx-auto">
         <div class="card_upper_part">
           <v-img
             class="white--text align-end"
