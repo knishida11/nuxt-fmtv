@@ -2,14 +2,13 @@
   <div :class="{ search_bar: !didSearch }">
     <v-form
       :class="{ search_bar_form: !didSearch }"
-      @keyup="didSearch = false"
-      @submit.prevent="getMovieData(searchText), blur()"
+      @submit.prevent="getMovieData(searchTerm), blur()"
     >
       <v-row class="align-center">
         <v-col cols="12" sm="10" class="pb-0">
           <v-text-field
             ref="input"
-            v-model.trim="searchText"
+            v-model.trim="searchTerm"
             label="Search for movie and TV shows"
             required
           />
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -35,33 +34,31 @@ export default {
       type: Boolean,
     },
   },
+  data() {
+    return {
+      searchTerm: '',
+    }
+  },
   computed: {
-    searchText: {
-      get() {
-        return this.$store.getters.searchText
-      },
-      set(searchText) {
-        this.$store.dispatch('updateSearchText', searchText)
-      },
-    },
     ...mapState(['apiKey', 'imdbUrl']),
+    ...mapGetters(['searchHistory']),
   },
   created() {
-    this.$emit('didSearch', false)
-  },
-  mounted() {
-    if (this.searchText) {
-      this.getMovieData(this.searchText)
+    if (this.searchHistory) {
+      this.searchTerm = this.searchHistory
+      this.getMovieData(this.searchHistory)
       this.$emit('didSearch', true)
     }
     window.scrollTo(0, 0)
   },
   methods: {
+    ...mapActions(['updateSearchHistory']),
     async getMovieData(text) {
       try {
         const response = await axios.get(
           `https://www.omdbapi.com/?apikey=${this.apiKey}&s=${text}`
         )
+        this.updateSearchHistory(text)
         this.$emit('searchResults', response.data.Search)
         this.$emit('didSearch', true)
       } catch (error) {

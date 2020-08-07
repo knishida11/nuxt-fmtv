@@ -1,6 +1,6 @@
 export const state = () => ({
   user: null,
-  searchText: '',
+  searchHistory: '',
   apiKey: process.env.OMDB_API_KEY,
   imdbUrl: 'https://www.imdb.com/title/',
 })
@@ -15,12 +15,12 @@ export const mutations = {
     }
   },
   UPDATE_SEARCH_TEXT(state, payload) {
-    state.searchText = payload
+    state.searchHistory = payload
   },
 }
 
 export const actions = {
-  updateSearchText({ commit }, payload) {
+  updateSearchHistory({ commit }, payload) {
     commit('UPDATE_SEARCH_TEXT', payload)
   },
   addToLikes({ getters }, payload) {
@@ -57,5 +57,5 @@ export const actions = {
 
 export const getters = {
   user: (state) => state.user,
-  searchText: (state) => state.searchText,
+  searchHistory: (state) => state.searchHistory,
 }
