@@ -20,13 +20,13 @@
         </v-list-item-content>
       </v-list-item>
     </nuxt-link>
-    <nuxt-link to="/favorite" class="sidebar_link text-decoration-none">
+    <nuxt-link to="/likes" class="sidebar_link text-decoration-none">
       <v-list-item link>
         <v-list-item-action>
           <v-icon>mdi-eye-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>Favorite</v-list-item-title>
+          <v-list-item-title>Likes</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </nuxt-link>

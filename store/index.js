@@ -23,18 +23,18 @@ export const actions = {
   updateSearchText({ commit }, payload) {
     commit('UPDATE_SEARCH_TEXT', payload)
   },
-  addToFavorite({ getters }, payload) {
+  addToLikes({ getters }, payload) {
     this.$fireStore
-      .collection(`users/${getters.user.uid}/favorite`)
+      .collection(`users/${getters.user.uid}/likes`)
       .doc(payload.id)
       .set({
         imdbID: payload.id,
         title: payload.title,
       })
   },
-  removeFromFavorite({ getters }, payload) {
+  removeFromLikes({ getters }, payload) {
     this.$fireStore
-      .collection(`users/${getters.user.uid}/favorite`)
+      .collection(`users/${getters.user.uid}/likes`)
       .doc(payload)
       .delete()
   },
@@ -58,6 +58,4 @@ export const actions = {
 export const getters = {
   user: (state) => state.user,
   searchText: (state) => state.searchText,
-  favorite: (state) => (state.favorite ? state.favorite : null),
-  watch: (state) => (state.watch ? state.watch : null),
 }
