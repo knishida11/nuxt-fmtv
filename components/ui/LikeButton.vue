@@ -23,7 +23,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'FavoriteButton',
+  name: 'LikeButton',
   props: {
     imdbID: {
       type: String,
@@ -44,7 +44,7 @@ export default {
   },
   created() {
     this.$fireStore
-      .collection(`users/${this.user.uid}/favorite`)
+      .collection(`users/${this.user.uid}/like`)
       .doc(this.imdbID)
       .get()
       .then((doc) => {
@@ -52,13 +52,13 @@ export default {
       })
   },
   methods: {
-    ...mapActions(['addToFavorite', 'removeFromFavorite']),
+    ...mapActions(['addToLikes', 'removeFromLikes']),
     like(id) {
-      this.addToFavorite(id)
+      this.addToLikes(id)
       this.isLiked = true
     },
     unLike(id) {
-      this.removeFromFavorite(id)
+      this.removeFromLikes(id)
       this.isLiked = false
     },
   },

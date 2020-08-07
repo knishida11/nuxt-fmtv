@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="movie in favoriteMovies" :key="movie.imdbID">
+        <tr v-for="movie in likedMovies" :key="movie.imdbID">
           <td>
             <nuxt-link
               :to="{
@@ -39,7 +39,7 @@
             </a>
           </td>
           <td>
-            <v-icon @click="removeFromFavorite(movie.imdbID)">
+            <v-icon @click="removeFromLikes(movie.imdbID)">
               mdi-trash-can-outline
             </v-icon>
           </td>
@@ -53,11 +53,11 @@
 import { mapGetters, mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'Favorite',
+  name: 'Likes',
   middleware: 'auth',
   data() {
     return {
-      favoriteMovies: [],
+      likedMovies: [],
       unsubscribe: null,
     }
   },
@@ -67,11 +67,11 @@ export default {
   },
   created() {
     this.unsubscribe = this.$fireStore
-      .collection(`users/${this.user.uid}/favorite`)
+      .collection(`users/${this.user.uid}/Like`)
       .onSnapshot((querySnapshot) => {
-        this.favoriteMovies = []
+        this.likedMovies = []
         querySnapshot.forEach((doc) => {
-          this.favoriteMovies.push({
+          this.likedMovies.push({
             title: doc.data().title,
             imdbID: doc.data().imdbID,
           })
@@ -82,7 +82,7 @@ export default {
     this.unsubscribe()
   },
   methods: {
-    ...mapActions(['removeFromFavorite']),
+    ...mapActions(['removeFromLikes']),
   },
 }
 </script>
