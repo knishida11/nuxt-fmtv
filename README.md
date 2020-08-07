@@ -9,6 +9,7 @@ https://nuxt-fmtv.web.app/
 
 - Nuxt.js
 - Vuetify.js
+- SASS
 - Firebase
 
 ## Description
@@ -28,7 +29,7 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 You can get movies and TV shows information from [IMDb](https://www.imdb.com/)<br>
 [IMDb](https://www.imdb.com/)から映画やTVショーの情報を取得することができます。
 
-### Favorite
+### Like
 You can make a list for your favorite movies and TV shows<br>
 あなたの好きな映画やTVショーのリストを作ることができます。
 
