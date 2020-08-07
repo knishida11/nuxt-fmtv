@@ -1,6 +1,7 @@
 <template>
   <div>
     <search-bar
+      :did-search="didSearch"
       @searchResults="searchResults = $event"
       @didSearch="didSearch = $event"
     />
