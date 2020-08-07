@@ -44,7 +44,7 @@ export default {
   },
   created() {
     this.$fireStore
-      .collection(`users/${this.user.uid}/like`)
+      .collection(`users/${this.user.uid}/likes`)
       .doc(this.imdbID)
       .get()
       .then((doc) => {

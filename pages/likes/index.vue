@@ -67,7 +67,7 @@ export default {
   },
   created() {
     this.unsubscribe = this.$fireStore
-      .collection(`users/${this.user.uid}/Like`)
+      .collection(`users/${this.user.uid}/likes`)
       .onSnapshot((querySnapshot) => {
         this.likedMovies = []
         querySnapshot.forEach((doc) => {
