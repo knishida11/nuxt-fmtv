@@ -18,12 +18,14 @@
           <like-button
             v-if="user"
             class="like_button"
+            :small="true"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
           />
           <watchlist-button
             v-if="user"
             class="watch_button"
+            :small="true"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
           />
