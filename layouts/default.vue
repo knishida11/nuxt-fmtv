@@ -31,4 +31,10 @@ img
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5)
   .container
     max-width: 100%
+
+.v-btn:before
+  opacity: 0 !important
+
+.v-ripple__container
+  opacity: 0 !important
 </style>
