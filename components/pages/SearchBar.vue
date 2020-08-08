@@ -1,7 +1,7 @@
 <template>
-  <div :class="{ search_bar: !didSearch }">
+  <div :class="{ searchBar: !didSearch }">
     <v-form
-      :class="{ search_bar_form: !didSearch }"
+      :class="{ searchBar_form: !didSearch }"
       @submit.prevent="getMovieData(searchTerm), blur()"
     >
       <v-row class="align-center">
@@ -75,15 +75,17 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search_bar
-  position: relative
-  height: 100vh
+<style lang="scss" scoped>
+.searchBar {
+  position: relative;
+  height: 100vh;
 
-.search_bar_form
-  position: absolute
-  top: 30%
-  left: 50%
-  transform: translate(-50%, -50%)
-  width: 100%
+  &_form {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+}
 </style>

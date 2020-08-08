@@ -8,8 +8,8 @@
       md="3"
       class="d-flex"
     >
-      <v-card class="mx-auto movie_card">
-        <div class="card_upper_part">
+      <v-card class="mx-auto movieCard">
+        <div class="cardUpperPart">
           <v-img
             class="white--text align-end"
             height="400"
@@ -17,14 +17,14 @@
           />
           <like-button
             v-if="user"
-            class="like_button"
+            class="userActionButton _2ndFromRight"
             :small="true"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
           />
           <watchlist-button
             v-if="user"
-            class="watch_button"
+            class="userActionButton"
             :small="true"
             :title="movie.Title"
             :imdb-i-d="movie.imdbID"
@@ -77,23 +77,26 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.movie_card
-  width: 90%
+<style lang="scss" scoped>
+.movieCard {
+  width: 90%;
 
-  @media (min-width: 600px)
-    width: 100%
+  @media (min-width: 600px) {
+    width: 100%;
+  }
+}
 
-.card_upper_part
-  position: relative
+.cardUpperPart {
+  position: relative;
+}
 
-.like_button
-  position: absolute
-  bottom: 2%
-  right: 65px
+.userActionButton {
+  position: absolute;
+  bottom: 2%;
+  right: 8px;
 
-.watch_button
-  position: absolute
-  bottom: 2%
-  right: 8px
+  &._2ndFromRight {
+    right: 65px;
+  }
+}
 </style>
