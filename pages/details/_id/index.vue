@@ -77,11 +77,9 @@
         </p>
       </v-col>
       <v-col cols="12" class="text-center">
-        <nuxt-link to="/" class="text-decoration-none">
-          <v-btn color="secondary">
-            Back to Search
-          </v-btn>
-        </nuxt-link>
+        <v-btn color="secondary" to="/" nuxt>
+          Back to Search
+        </v-btn>
       </v-col>
     </v-row>
   </div>

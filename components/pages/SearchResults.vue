@@ -31,19 +31,19 @@
           />
         </div>
         <div class="text-center">
-          <nuxt-link
+          <v-btn
+            class="mt-3"
+            color="primary"
             :to="{
               name: 'details-id',
               params: {
                 id: movie.imdbID,
               },
             }"
-            class="text-decoration-none"
+            nuxt
           >
-            <v-btn class="mt-3" color="primary">
-              View Details
-            </v-btn>
-          </nuxt-link>
+            View Details
+          </v-btn>
         </div>
         <v-card-subtitle class="pb-0">
           {{ movie.Year }}

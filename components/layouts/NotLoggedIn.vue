@@ -8,16 +8,14 @@
         <v-list-item-title>Login</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
-    <nuxt-link to="/" class="sidebar_link text-decoration-none">
-      <v-list-item link>
-        <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Search</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </nuxt-link>
+    <v-list-item link to="/" nuxt>
+      <v-list-item-action>
+        <v-icon>mdi-magnify</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Search</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
   </div>
 </template>
 
