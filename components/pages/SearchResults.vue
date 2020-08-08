@@ -90,10 +90,10 @@ export default {
 .like_button
   position: absolute
   bottom: 2%
-  right: 24%
+  right: 65px
 
 .watch_button
   position: absolute
   bottom: 2%
-  right: 3%
+  right: 8px
 </style>
