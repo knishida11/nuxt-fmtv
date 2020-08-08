@@ -10,36 +10,32 @@
         </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
-    <nuxt-link to="/" class="sidebar_link text-decoration-none">
-      <v-list-item link>
-        <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Search</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </nuxt-link>
-    <nuxt-link to="/likes" class="sidebar_link text-decoration-none">
-      <v-list-item link>
-        <v-list-item-action>
-          <v-icon>mdi-heart-outline</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Likes</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </nuxt-link>
-    <nuxt-link to="/watch" class="sidebar_link text-decoration-none">
-      <v-list-item link>
-        <v-list-item-action>
-          <v-icon>mdi-eye-outline</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Watchlist</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </nuxt-link>
+    <v-list-item link to="/" nuxt>
+      <v-list-item-action>
+        <v-icon>mdi-magnify</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Search</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item link to="/likes" nuxt>
+      <v-list-item-action>
+        <v-icon>mdi-heart-outline</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Likes</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item link to="/watch" nuxt>
+      <v-list-item-action>
+        <v-icon>mdi-eye-outline</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Watchlist</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
     <v-list-item link class="logout" @click="logout">
       <v-list-item-action>
         <v-icon>mdi-logout</v-icon>
