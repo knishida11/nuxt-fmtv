@@ -24,17 +24,24 @@ export default {
 }
 </script>
 
-<style lang="sass">
-img
-  max-width: 100%
+<style lang="scss">
+img {
+  max-width: 100%;
+}
 
-@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5)
-  .container
-    max-width: 100%
+// This targets iPad Pro. the container from Vuetify is too narrow for iPad Pro.
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .container {
+    max-width: 100%;
+  }
+}
 
-.v-btn:before
-  opacity: 0 !important
+// These disable the ripple effect(click) from Vuetify in all files
+.v-btn:before {
+  opacity: 0 !important;
+}
 
-.v-ripple__container
-  opacity: 0 !important
+.v-ripple__container {
+  opacity: 0 !important;
+}
 </style>

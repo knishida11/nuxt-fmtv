@@ -2,7 +2,7 @@
   <div>
     <v-list-item>
       <v-list-item-action>
-        <img class="user_icon" :src="user.photoURL" />
+        <img class="userIcon" :src="user.photoURL" />
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -63,16 +63,19 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.user_icon
-  width: 24px
-  height: 24px
+<style lang="scss" scoped>
+.userIcon {
+  width: 24px;
+  height: 24px;
+}
 
-.logout
-  position: static
+.logout {
+  position: static;
 
-  @media (min-width: 960px)
-    bottom: 0
-    position: fixed
-    width: 100%
+  @media (min-width: 960px) {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+  }
+}
 </style>
