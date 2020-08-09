@@ -1,6 +1,7 @@
 <template>
   <div :class="{ searchBar: !didSearch }">
     <v-form
+      v-model="valid"
       :class="{ searchBar_form: !didSearch }"
       @submit.prevent="getMovieData(searchTerm), blur()"
     >
@@ -11,6 +12,7 @@
             v-model.trim="searchTerm"
             label="Search for movie and TV shows"
             required
+            :rules="searchTermRules"
           />
         </v-col>
         <v-col cols="12" sm="2" class="text-center py-0">
@@ -37,6 +39,8 @@ export default {
   data() {
     return {
       searchTerm: '',
+      valid: false,
+      searchTermRules: [(v) => !!v || 'Serch word is required'],
     }
   },
   computed: {
@@ -53,15 +57,17 @@ export default {
   methods: {
     ...mapActions('user', ['updateSearchHistory']),
     async getMovieData(text) {
-      try {
-        const response = await axios.get(
-          `https://www.omdbapi.com/?apikey=${this.apiKey}&s=${text}`
-        )
-        this.updateSearchHistory(text)
-        this.$emit('searchResults', response.data.Search)
-        this.$emit('didSearch', true)
-      } catch (error) {
-        alert(error)
+      if (this.searchTerm) {
+        try {
+          const response = await axios.get(
+            `https://www.omdbapi.com/?apikey=${this.apiKey}&s=${text}`
+          )
+          this.updateSearchHistory(text)
+          this.$emit('searchResults', response.data.Search)
+          this.$emit('didSearch', true)
+        } catch (error) {
+          alert(error)
+        }
       }
     },
     blur() {
