@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item link @click="login">
+    <v-list-item link to="/login" nuxt>
       <v-list-item-action>
         <v-icon>mdi-login</v-icon>
       </v-list-item-action>
@@ -20,17 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'NotLoggedIn',
-  computed: {
-    ...mapGetters('user', ['user']),
-  },
-  methods: {
-    login() {
-      const googleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider()
-      this.$fireAuth.signInWithRedirect(googleAuthProvider)
-    },
-  },
 }
 </script>
