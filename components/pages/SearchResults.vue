@@ -61,6 +61,7 @@ import { mapGetters } from 'vuex'
 import LikeButton from '~/components/ui/LikeButton.vue'
 import WatchlistButton from '~/components/ui/WatchlistButton.vue'
 export default {
+  name: 'SearchResults',
   components: {
     LikeButton,
     WatchlistButton,
