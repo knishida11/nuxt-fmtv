@@ -14,14 +14,14 @@ export const mutations = {
       state.user = { displayName, photoURL, uid }
     }
   },
-  UPDATE_SEARCH_TEXT(state, payload) {
+  UPDATE_SEARCH_HISTORY(state, payload) {
     state.searchHistory = payload
   },
 }
 
 export const actions = {
   updateSearchHistory({ commit }, payload) {
-    commit('UPDATE_SEARCH_TEXT', payload)
+    commit('UPDATE_SEARCH_HISTORY', payload)
   },
   addToLikes({ getters }, payload) {
     this.$fireStore
