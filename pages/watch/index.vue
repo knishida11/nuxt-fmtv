@@ -53,7 +53,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'Watchlist',
+  name: 'Watch',
   middleware: 'auth',
   data() {
     return {
