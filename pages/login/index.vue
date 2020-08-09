@@ -1,7 +1,7 @@
 <template>
   <div class="loginButtons">
     <p>You're able to have your own likes and watchlist pages by logging in.</p>
-    <v-btn @click="login" color="primary">
+    <v-btn color="primary" @click="login">
       Login with Google
     </v-btn>
   </div>
