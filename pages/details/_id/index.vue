@@ -87,7 +87,7 @@
 
 <script>
 import axios from 'axios'
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import LikeButton from '~/components/ui/LikeButton.vue'
 import WatchlistButton from '~/components/ui/WatchlistButton'
 
@@ -104,8 +104,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['apiKey', 'imdbUrl']),
-    ...mapGetters(['user']),
+    ...mapGetters('user', ['user', 'apiKey', 'imdbUrl']),
   },
   created() {
     this.fetchMovieData(this.$route.params.id)

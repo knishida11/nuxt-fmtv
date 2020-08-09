@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters('user', ['user']),
   },
   created() {
     this.$fireStore
@@ -56,7 +56,7 @@ export default {
       })
   },
   methods: {
-    ...mapActions(['addToLikes', 'removeFromLikes']),
+    ...mapActions('user', ['addToLikes', 'removeFromLikes']),
     like(id) {
       this.addToLikes(id)
       this.isLiked = true
