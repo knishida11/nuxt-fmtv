@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters('user', ['user']),
   },
   created() {
     this.$fireStore
@@ -56,7 +56,7 @@ export default {
       })
   },
   methods: {
-    ...mapActions(['addToWatchlist', 'removeFromWatchlist']),
+    ...mapActions('user', ['addToWatchlist', 'removeFromWatchlist']),
     watchlist(id) {
       this.addToWatchlist(id)
       this.isWatchlisted = true

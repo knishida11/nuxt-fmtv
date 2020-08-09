@@ -52,7 +52,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'LoggedIn',
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters('user', ['user']),
   },
   methods: {
     async logout() {

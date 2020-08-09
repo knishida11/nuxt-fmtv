@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -40,8 +40,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['apiKey', 'imdbUrl']),
-    ...mapGetters(['searchHistory']),
+    ...mapGetters('user', ['searchHistory', 'apiKey']),
   },
   created() {
     if (this.searchHistory) {
@@ -52,7 +51,7 @@ export default {
     window.scrollTo(0, 0)
   },
   methods: {
-    ...mapActions(['updateSearchHistory']),
+    ...mapActions('user', ['updateSearchHistory']),
     async getMovieData(text) {
       try {
         const response = await axios.get(
