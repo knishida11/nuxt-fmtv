@@ -19,7 +19,7 @@ export default {
     Header,
   },
   computed: {
-    ...mapGetters('user', ['user']),
+    ...mapGetters(['user']),
   },
 }
 </script>

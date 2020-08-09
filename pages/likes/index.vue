@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Likes',
@@ -62,7 +62,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('user', ['user', 'apiKey', 'imdbUrl']),
+    ...mapGetters(['user']),
+    ...mapState(['apiKey', 'imdbUrl']),
   },
   created() {
     this.unsubscribe = this.$fireStore
@@ -81,7 +82,7 @@ export default {
     this.unsubscribe()
   },
   methods: {
-    ...mapActions('user', ['removeFromLikes']),
+    ...mapActions(['removeFromLikes']),
   },
 }
 </script>

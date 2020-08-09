@@ -58,6 +58,4 @@ export const actions = {
 export const getters = {
   user: (state) => state.user,
   searchHistory: (state) => state.searchHistory,
-  apiKey: (state) => state.apiKey,
-  imdbUrl: (state) => state.imdbUrl,
 }

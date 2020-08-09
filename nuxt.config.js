@@ -90,7 +90,7 @@ export default {
 
             // it is recommended to configure either a mutation or action but you can set both
             initialize: {
-              onAuthStateChangedMutation: 'user/ON_AUTH_STATE_CHANGED_MUTATION',
+              onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
               // onAuthStateChangedAction: 'onAuthStateChangedAction'
             },
 

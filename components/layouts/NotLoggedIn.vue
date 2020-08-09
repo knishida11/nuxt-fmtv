@@ -24,7 +24,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'NotLoggedIn',
   computed: {
-    ...mapGetters('user', ['user']),
+    ...mapGetters(['user']),
   },
   methods: {
     login() {
