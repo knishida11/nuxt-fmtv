@@ -6,13 +6,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  ON_AUTH_STATE_CHANGED_MUTATION: (state, { authUser }) => {
-    if (!authUser) {
-      state.user = null
-    } else {
-      const { displayName, photoURL, uid } = authUser
-      state.user = { displayName, photoURL, uid }
-    }
+  SET_USER(state, payload) {
+    state.user = payload
+  },
+  UNSET_USER(state) {
+    state.user = null
   },
   UPDATE_SEARCH_HISTORY(state, payload) {
     state.searchHistory = payload
@@ -20,6 +18,17 @@ export const mutations = {
 }
 
 export const actions = {
+  onAuthStateChangedAction: (ctx, { authUser }) => {
+    if (!authUser) {
+      ctx.commit('UNSET_USER')
+    } else {
+      const userInfo = {
+        uid: authUser.uid,
+        displayName: authUser.displayName,
+      }
+      ctx.commit('SET_USER', userInfo)
+    }
+  },
   updateSearchHistory({ commit }, payload) {
     commit('UPDATE_SEARCH_HISTORY', payload)
   },
