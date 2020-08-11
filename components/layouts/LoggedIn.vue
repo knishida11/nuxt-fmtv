@@ -2,7 +2,7 @@
   <div>
     <v-list-item>
       <v-list-item-action>
-        <img class="userIcon" :src="user.photoURL" />
+        <v-icon>mdi-account-outline</v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>

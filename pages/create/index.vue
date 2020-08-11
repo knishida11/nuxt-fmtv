@@ -1,17 +1,17 @@
 <template>
   <div class="loginButtons">
-    <p>You're able to have your own likes and watchlist pages by logging in.</p>
-    <v-btn color="primary" @click="googleLogin">
-      <v-icon class="mr-1">
-        mdi-google
-      </v-icon>
-      Login with Google
-    </v-btn>
-    <v-form ref="form" v-model="valid" @submit.prevent="emailLogin">
+    <v-form ref="form" v-model="valid" @submit.prevent="createAccount">
       <v-container class="py-0">
         <v-row>
-          <v-col cols="12" sm="6" offset-sm="3">
-            <v-divider class="my-5" />
+          <v-col cols="12" sm="4" offset-sm="4">
+            <v-text-field
+              v-model.trim="displayName"
+              class="pt-0 mt-0"
+              :rules="displayNameRules"
+              label="Display Name"
+              required
+              @keyup="resetError"
+            />
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
             <v-text-field
@@ -36,18 +36,25 @@
               @click:append="passwordShow = !passwordShow"
             />
           </v-col>
-          <v-col cols="12" sm="4" offset-sm="4">
-            <p v-if="error" class="red lighten-1 px-2 py-2 white--text">
+          <v-col v-if="error" cols="12" sm="4" offset-sm="4">
+            <p class="red lighten-1 px-2 py-2 white--text">
               {{ error }}
             </p>
           </v-col>
+          <v-col cols="12" sm="4" offset-sm="4">
+            <v-btn color="primary" type="submit" :disabled="!valid">
+              <v-icon class="mr-1">
+                mdi-account-plus-outline
+              </v-icon>
+              Create Account
+            </v-btn>
+          </v-col>
+          <v-col cols="12" sm="4" offset-sm="4">
+            <nuxt-link to="/login">
+              Back to login
+            </nuxt-link>
+          </v-col>
         </v-row>
-        <v-btn color="primary" type="submit" :disabled="!valid">
-          <v-icon class="mr-1">
-            mdi-email-outline
-          </v-icon>
-          Login with email
-        </v-btn>
       </v-container>
     </v-form>
   </div>
@@ -55,33 +62,41 @@
 
 <script>
 export default {
-  name: 'Login',
-  middleware: 'login',
+  name: 'Create',
   data() {
     return {
       error: null,
       valid: false,
       email: '',
       password: '',
+      displayName: '',
       passwordShow: false,
+      displayNameRules: [(v) => !!v || 'Display Name is required'],
       emailRules: [
         (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+/.test(v) || 'E-mail must be valid',
+        (v) =>
+          /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/.test(
+            v
+          ) || 'E-mail must be valid',
       ],
-      passwordRules: [(v) => !!v || 'password is required'],
+      passwordRules: [
+        (v) => !!v || 'Password is required',
+        (v) => v.length >= 6 || 'At least 6 characters',
+      ],
     }
   },
   methods: {
     resetError() {
       this.error = null
     },
-    googleLogin() {
-      const googleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider()
-      this.$fireAuth.signInWithRedirect(googleAuthProvider)
-    },
-    emailLogin() {
+    createAccount() {
       this.$fireAuth
-        .signInWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then((result) => {
+          result.user.updateProfile({
+            displayName: this.displayName,
+          })
+        })
         .then(() => {
           this.$router.push('/')
         })
