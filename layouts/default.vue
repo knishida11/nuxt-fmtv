@@ -37,10 +37,6 @@ img {
 }
 
 // These disable the ripple effect(click) from Vuetify in all files
-.v-btn:before {
-  opacity: 0 !important;
-}
-
 .v-ripple__container {
   opacity: 0 !important;
 }
