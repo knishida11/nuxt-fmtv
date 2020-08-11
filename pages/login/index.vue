@@ -36,18 +36,25 @@
               @click:append="passwordShow = !passwordShow"
             />
           </v-col>
-          <v-col cols="12" sm="4" offset-sm="4">
-            <p v-if="error" class="red lighten-1 px-2 py-2 white--text">
+          <v-col v-if="error" cols="12" sm="4" offset-sm="4">
+            <p class="red lighten-1 px-2 py-2 white--text">
               {{ error }}
             </p>
           </v-col>
+          <v-col cols="12" sm="4" offset-sm="4">
+            <v-btn color="primary" type="submit" :disabled="!valid">
+              <v-icon class="mr-1">
+                mdi-email-outline
+              </v-icon>
+              Login with email
+            </v-btn>
+          </v-col>
+          <v-col cols="12" sm="4" offset-sm="4">
+            <nuxt-link to="/create">
+              Create Account
+            </nuxt-link>
+          </v-col>
         </v-row>
-        <v-btn color="primary" type="submit" :disabled="!valid">
-          <v-icon class="mr-1">
-            mdi-email-outline
-          </v-icon>
-          Login with email
-        </v-btn>
       </v-container>
     </v-form>
   </div>
