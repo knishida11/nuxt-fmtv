@@ -40,7 +40,7 @@ export default {
     return {
       searchTerm: '',
       valid: false,
-      searchTermRules: [(v) => !!v || 'Serch word is required'],
+      searchTermRules: [(v) => !!v || 'Search word is required'],
     }
   },
   computed: {
