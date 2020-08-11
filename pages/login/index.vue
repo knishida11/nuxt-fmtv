@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Login',
   data() {
@@ -76,6 +77,16 @@ export default {
       ],
       passwordRules: [(v) => !!v || 'Password is required'],
     }
+  },
+  computed: {
+    ...mapGetters('user', ['user']),
+  },
+  watch: {
+    user() {
+      if (this.user) {
+        this.$router.push('/')
+      }
+    },
   },
   methods: {
     resetError() {
