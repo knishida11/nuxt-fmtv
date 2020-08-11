@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Create',
   data() {
@@ -84,6 +85,16 @@ export default {
         (v) => v.length >= 6 || 'At least 6 characters',
       ],
     }
+  },
+  computed: {
+    ...mapGetters('user', ['user']),
+  },
+  watch: {
+    user() {
+      if (this.user) {
+        this.$router.push('/')
+      }
+    },
   },
   methods: {
     resetError() {
