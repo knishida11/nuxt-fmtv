@@ -75,7 +75,7 @@ export default {
         (v) => !!v || 'E-mail is required',
         (v) => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
-      passwordRules: [(v) => !!v || 'password is required'],
+      passwordRules: [(v) => !!v || 'Password is required'],
     }
   },
   methods: {
