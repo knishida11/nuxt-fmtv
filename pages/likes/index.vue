@@ -54,7 +54,6 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Likes',
-  middleware: 'auth',
   data() {
     return {
       likedMovies: [],
@@ -65,20 +64,24 @@ export default {
     ...mapGetters('user', ['user', 'apiKey', 'imdbUrl']),
   },
   created() {
-    this.unsubscribe = this.$fireStore
-      .collection(`users/${this.user.uid}/likes`)
-      .onSnapshot((querySnapshot) => {
-        this.likedMovies = []
-        querySnapshot.forEach((doc) => {
-          this.likedMovies.push({
-            title: doc.data().title,
-            imdbID: doc.data().imdbID,
+    if (this.user) {
+      this.unsubscribe = this.$fireStore
+        .collection(`users/${this.user.uid}/likes`)
+        .onSnapshot((querySnapshot) => {
+          this.likedMovies = []
+          querySnapshot.forEach((doc) => {
+            this.likedMovies.push({
+              title: doc.data().title,
+              imdbID: doc.data().imdbID,
+            })
           })
         })
-      })
+    }
   },
   beforeDestroy() {
-    this.unsubscribe()
+    if (this.user) {
+      this.unsubscribe()
+    }
   },
   methods: {
     ...mapActions('user', ['removeFromLikes']),

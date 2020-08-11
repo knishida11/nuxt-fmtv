@@ -154,4 +154,7 @@ export default {
     MEASUREMENT_ID,
     OMDB_API_KEY,
   },
+  router: {
+    middleware: ['auth'],
+  },
 }

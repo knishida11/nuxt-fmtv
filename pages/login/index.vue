@@ -63,7 +63,6 @@
 <script>
 export default {
   name: 'Login',
-  middleware: 'login',
   data() {
     return {
       error: null,
