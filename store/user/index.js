@@ -1,3 +1,5 @@
+import { db } from '~/firestore/db.js'
+
 export const state = () => ({
   user: null,
   searchHistory: '',
@@ -22,11 +24,27 @@ export const actions = {
     if (!authUser) {
       ctx.commit('UNSET_USER')
     } else {
-      const userInfo = {
-        uid: authUser.uid,
-        displayName: authUser.displayName,
-      }
-      ctx.commit('SET_USER', userInfo)
+      db.collection('users')
+        .doc(authUser.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            ctx.commit('SET_USER', doc.data())
+          } else {
+            db.collection('users')
+              .doc(authUser.uid)
+              .set({
+                displayName: authUser.displayName,
+                uid: authUser.uid,
+              })
+              .then(() => {
+                ctx.commit('SET_USER', {
+                  displayName: authUser.displayName,
+                  uid: authUser.uid,
+                })
+              })
+          }
+        })
     }
   },
   updateSearchHistory({ commit }, payload) {
