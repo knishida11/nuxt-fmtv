@@ -54,7 +54,6 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Watch',
-  middleware: 'auth',
   data() {
     return {
       watchMovies: [],
@@ -65,20 +64,24 @@ export default {
     ...mapGetters('user', ['user', 'apiKey', 'imdbUrl']),
   },
   created() {
-    this.unsubscribe = this.$fireStore
-      .collection(`users/${this.user.uid}/watch`)
-      .onSnapshot((querySnapshot) => {
-        this.watchMovies = []
-        querySnapshot.forEach((doc) => {
-          this.watchMovies.push({
-            title: doc.data().title,
-            imdbID: doc.data().imdbID,
+    if (this.user) {
+      this.unsubscribe = this.$fireStore
+        .collection(`users/${this.user.uid}/watch`)
+        .onSnapshot((querySnapshot) => {
+          this.watchMovies = []
+          querySnapshot.forEach((doc) => {
+            this.watchMovies.push({
+              title: doc.data().title,
+              imdbID: doc.data().imdbID,
+            })
           })
         })
-      })
+    }
   },
   beforeDestroy() {
-    this.unsubscribe()
+    if (this.user) {
+      this.unsubscribe()
+    }
   },
   methods: {
     ...mapActions('user', ['removeFromWatchlist']),
