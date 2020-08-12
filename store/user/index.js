@@ -17,6 +17,9 @@ export const mutations = {
   UPDATE_SEARCH_HISTORY(state, payload) {
     state.searchHistory = payload
   },
+  CHANGE_STATE_DISPLAY_NAME(state, payload) {
+    state.user.displayName = payload
+  },
 }
 
 export const actions = {
@@ -36,11 +39,13 @@ export const actions = {
               .set({
                 displayName: authUser.displayName,
                 uid: authUser.uid,
+                email: authUser.email,
               })
               .then(() => {
                 ctx.commit('SET_USER', {
                   displayName: authUser.displayName,
                   uid: authUser.uid,
+                  email: authUser.email,
                 })
               })
           }
@@ -49,6 +54,9 @@ export const actions = {
   },
   updateSearchHistory({ commit }, payload) {
     commit('UPDATE_SEARCH_HISTORY', payload)
+  },
+  changeStateDisplayName({ commit }, payload) {
+    commit('CHANGE_STATE_DISPLAY_NAME', payload)
   },
   addToLikes({ getters }, payload) {
     this.$fireStore
