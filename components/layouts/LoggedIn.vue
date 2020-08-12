@@ -1,6 +1,14 @@
 <template>
   <div>
-    <v-list-item>
+    <v-list-item
+      :to="{
+        name: 'id',
+        params: {
+          id: user.pageId,
+        },
+      }"
+      nuxt
+    >
       <v-list-item-action>
         <v-icon>mdi-account-outline</v-icon>
       </v-list-item-action>

@@ -20,6 +20,9 @@ export const mutations = {
   CHANGE_STATE_DISPLAY_NAME(state, payload) {
     state.user.displayName = payload
   },
+  CHANGE_STATE_PERSONAL_ID(state, payload) {
+    state.user.pageId = payload
+  },
 }
 
 export const actions = {
@@ -40,12 +43,19 @@ export const actions = {
                 displayName: authUser.displayName,
                 uid: authUser.uid,
                 email: authUser.email,
+                pageId: authUser.uid,
+              })
+              .then(() => {
+                db.collection('personal_pages').doc(authUser.uid).set({
+                  uid: authUser.uid,
+                })
               })
               .then(() => {
                 ctx.commit('SET_USER', {
                   displayName: authUser.displayName,
                   uid: authUser.uid,
                   email: authUser.email,
+                  pageId: authUser.uid,
                 })
               })
           }
@@ -57,6 +67,9 @@ export const actions = {
   },
   changeStateDisplayName({ commit }, payload) {
     commit('CHANGE_STATE_DISPLAY_NAME', payload)
+  },
+  changeStatePersonalId({ commit }, payload) {
+    commit('CHANGE_STATE_PERSONAL_ID', payload)
   },
   addToLikes({ getters }, payload) {
     this.$fireStore
