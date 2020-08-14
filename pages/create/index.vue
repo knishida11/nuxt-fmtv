@@ -104,16 +104,19 @@ export default {
     createAccount() {
       this.$fireAuth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((result) => {
-          result.user.updateProfile({
-            displayName: this.displayName,
-          })
+        .then((userCredentials) => {
+          if (userCredentials.user) {
+            userCredentials.user
+              .updateProfile({
+                displayName: this.displayName,
+              })
+              .then(() => {
+                this.$router.push('/')
+              })
+          }
         })
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((error) => {
-          this.error = error
+        .catch(function (error) {
+          alert(error.message)
         })
     },
     validate() {
