@@ -1,5 +1,5 @@
 # FMTV(Nuxt.js)
-![fmtv-nuxt](https://user-images.githubusercontent.com/37486662/89347967-b3778c80-d6e6-11ea-9fe2-d5ab9c86c472.jpg)
+![fmtv-nuxt](https://user-images.githubusercontent.com/37486662/90230426-80ef3180-de54-11ea-821d-749391f7e5b0.jpg)
 
 ## URL
 
@@ -25,8 +25,14 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 
 ## Features
 
+### Personal Page
+You can create your own page to share your likes and watch lists with others.<br>
+ユニークページを作成して他のユーザーに自分のリストを共有することができます。<br>
+
+For example https://nuxt-fmtv.web.app/knishida
+
 ### Search
-You can get movies and TV shows information from [IMDb](https://www.imdb.com/)<br>
+You can get movies and TV shows information from [IMDb](https://www.imdb.com/).<br>
 [IMDb](https://www.imdb.com/)から映画やTVショーの情報を取得することができます。
 
 ### Like
@@ -37,7 +43,17 @@ You can make a list for your favorite movies and TV shows<br>
 You can make a list of movies and TVshows you want to watch<br>
 あなたの観たい映画やTVショーのリストを作ることができます。
 
-## Upcoming Features
+### Settings
+You can chenge these settings below
 
-- Email and password login
-- Personal page
+- Confirm and change your name in the app
+- Confirm your email
+- Confirm and change your page ID
+- Delete your account
+
+下記の変更ができます。
+
+- アプリ内で表示される自分の名前の確認と変更
+- メールアドレスの確認
+- 自分のページIDの確認と変更
+- アカウントの削除
