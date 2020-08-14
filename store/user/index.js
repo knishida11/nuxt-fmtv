@@ -35,7 +35,14 @@ export const actions = {
         .get()
         .then((doc) => {
           if (doc.exists) {
-            ctx.commit('SET_USER', doc.data())
+            db.collection('users')
+              .doc(authUser.uid)
+              .set({
+                displayName: authUser.displayName,
+              })
+              .then(() => {
+                ctx.commit('SET_USER', doc.data())
+              })
           } else {
             db.collection('users')
               .doc(authUser.uid)
