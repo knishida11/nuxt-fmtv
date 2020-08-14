@@ -50,14 +50,6 @@
         <v-list-item-title>Settings</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
-    <v-list-item link class="logout" @click="logout">
-      <v-list-item-action>
-        <v-icon>mdi-logout</v-icon>
-      </v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Logout</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
   </div>
 </template>
 
@@ -67,12 +59,6 @@ export default {
   name: 'LoggedIn',
   computed: {
     ...mapGetters('user', ['user']),
-  },
-  methods: {
-    async logout() {
-      this.$fireAuth.signOut()
-      this.$router.push('/')
-    },
   },
 }
 </script>
