@@ -3,7 +3,7 @@
     <v-btn v-if="!user" to="/login" nuxt small>
       Login
     </v-btn>
-    <v-btn v-else @click="logout" small>
+    <v-btn v-else small @click="logout">
       Logout
     </v-btn>
   </div>
