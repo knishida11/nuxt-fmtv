@@ -176,13 +176,19 @@ export default {
           alert('Error getting document:', error)
         })
     },
-    deleteUser() {
-      const user = this.$fireAuth.currentUser
+    async deleteUser() {
+      const user = await this.$fireAuth.currentUser
 
       user
         .delete()
         .then(() => {
           this.$fireStore.collection('users').doc(this.user.uid).delete()
+        })
+        .then(() => {
+          this.$fireStore
+            .collection('personal_pages')
+            .doc(this.user.pageId)
+            .delete()
         })
         .then(() => {
           this.$router.push('/')
