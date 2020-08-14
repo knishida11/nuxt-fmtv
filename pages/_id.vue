@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="like in likes" :key="like.imdbID">
+            <tr v-for="like in watchlist" :key="like.imdbID">
               <td>
                 <nuxt-link
                   :to="{
