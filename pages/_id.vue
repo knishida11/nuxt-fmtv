@@ -6,14 +6,14 @@
       </v-banner>
     </v-col>
     <v-col cols="12" sm="6">
-      <v-simple-table dense>
+      <v-simple-table>
         <template v-slot:default>
           <thead>
             <tr>
               <th class="text-left">
                 Likes
               </th>
-              <th class="text-left">
+              <th class="text-left table_header_imdb">
                 IMDb
               </th>
             </tr>
@@ -51,14 +51,14 @@
       </v-simple-table>
     </v-col>
     <v-col cols="12" sm="6">
-      <v-simple-table dense>
+      <v-simple-table>
         <template v-slot:default>
           <thead>
             <tr>
               <th class="text-left">
                 Watchlist
               </th>
-              <th class="text-left">
+              <th class="text-left table_header_imdb">
                 IMDb
               </th>
             </tr>
@@ -162,3 +162,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.table_header_imdb {
+  width: 10%;
+
+  @media (min-width: 600px) {
+    width: auto;
+  }
+}
+</style>
