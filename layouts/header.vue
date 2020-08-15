@@ -2,8 +2,7 @@
   <div>
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
-        <not-logged-in v-if="!user" />
-        <logged-in v-else />
+        <sidebar />
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="indigo" dense>
@@ -20,15 +19,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import LoggedIn from '~/components/layouts/LoggedIn.vue'
-import NotLoggedIn from '~/components/layouts/NotLoggedIn.vue'
 import LoginLogoutButton from '~/components/ui/LoginLogoutButton.vue'
+import Sidebar from '~/components/layouts/Sidebar.vue'
 export default {
   name: 'Header',
   components: {
-    LoggedIn,
-    NotLoggedIn,
     LoginLogoutButton,
+    Sidebar,
   },
   data() {
     return {
