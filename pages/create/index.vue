@@ -119,6 +119,12 @@ export default {
             email: userCredentials.user.email,
             pageId: userCredentials.user.uid,
           })
+        await this.$fireStore
+          .collection('personal_pages')
+          .doc(userCredentials.user.uid)
+          .set({
+            uid: userCredentials.user.uid,
+          })
         this.$router.push('/')
       } catch (error) {
         alert(error)
