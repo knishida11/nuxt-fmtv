@@ -20,7 +20,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import LoginLogoutButton from '~/components/ui/LoginLogoutButton.vue'
-import Sidebar from '~/components/layouts/Sidebar.vue'
+import Sidebar from '~/layouts/Sidebar.vue'
 export default {
   name: 'Header',
   components: {
