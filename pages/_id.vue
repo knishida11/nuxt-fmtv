@@ -1,16 +1,17 @@
 <template>
   <v-row v-if="user">
     <v-col cols="12">
-      <h1>{{ user.displayName }}</h1>
+      <v-banner single-line>
+        {{ user.displayName }}
+      </v-banner>
     </v-col>
     <v-col cols="12" sm="6">
-      <h2>Likes</h2>
-      <v-simple-table>
+      <v-simple-table dense>
         <template v-slot:default>
           <thead>
             <tr>
               <th class="text-left">
-                Name
+                Likes
               </th>
               <th class="text-left">
                 IMDb
@@ -50,13 +51,12 @@
       </v-simple-table>
     </v-col>
     <v-col cols="12" sm="6">
-      <h2>Watchlist</h2>
-      <v-simple-table>
+      <v-simple-table dense>
         <template v-slot:default>
           <thead>
             <tr>
               <th class="text-left">
-                Name
+                Watchlist
               </th>
               <th class="text-left">
                 IMDb
@@ -162,10 +162,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-</style>
