@@ -35,7 +35,7 @@
           Search
         </template>
       </sidebar-item>
-      <sidebar-item path="likes">
+      <sidebar-item path="/likes">
         <template v-slot:icon>
           mdi-heart-outline
         </template>
@@ -43,7 +43,7 @@
           Likes
         </template>
       </sidebar-item>
-      <sidebar-item path="watch">
+      <sidebar-item path="/watch">
         <template v-slot:icon>
           mdi-eye-outline
         </template>
@@ -51,7 +51,7 @@
           Watchlist
         </template>
       </sidebar-item>
-      <sidebar-item path="settings">
+      <sidebar-item path="/settings">
         <template v-slot:icon>
           mdi-cog-outline
         </template>
