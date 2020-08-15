@@ -6,4 +6,7 @@ export default function ({ redirect, store, route }) {
   if (!user && route.path === '/watch') {
     redirect('/')
   }
+  if (!user && route.path === '/settings') {
+    redirect('/')
+  }
 }
