@@ -101,23 +101,28 @@ export default {
     resetError() {
       this.error = null
     },
-    createAccount() {
-      this.$fireAuth
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then((userCredentials) => {
-          if (userCredentials.user) {
-            userCredentials.user
-              .updateProfile({
-                displayName: this.displayName,
-              })
-              .then(() => {
-                this.$router.push('/')
-              })
-          }
+    async createAccount() {
+      try {
+        const userCredentials = await this.$fireAuth.createUserWithEmailAndPassword(
+          this.email,
+          this.password
+        )
+        await userCredentials.user.updateProfile({
+          displayName: this.displayName,
         })
-        .catch(function (error) {
-          alert(error.message)
-        })
+        await this.$fireStore
+          .collection('users')
+          .doc(userCredentials.user.uid)
+          .set({
+            displayName: userCredentials.user.displayName,
+            uid: userCredentials.user.uid,
+            email: userCredentials.user.email,
+            pageId: userCredentials.user.uid,
+          })
+        this.$router.push('/')
+      } catch (error) {
+        alert(error)
+      }
     },
     validate() {
       this.$refs.form.validate()

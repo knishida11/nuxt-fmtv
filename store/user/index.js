@@ -26,7 +26,7 @@ export const mutations = {
 }
 
 export const actions = {
-  onAuthStateChangedAction: (ctx, { authUser }) => {
+  onAuthStateChangedAction: (ctx, { authUser, claims }) => {
     if (!authUser) {
       ctx.commit('UNSET_USER')
     } else {
@@ -35,15 +35,11 @@ export const actions = {
         .get()
         .then((doc) => {
           if (doc.exists) {
-            db.collection('users')
-              .doc(authUser.uid)
-              .set({
-                displayName: authUser.displayName,
-              })
-              .then(() => {
-                ctx.commit('SET_USER', doc.data())
-              })
-          } else {
+            ctx.commit('SET_USER', doc.data())
+          } else if (
+            !doc.exists &&
+            claims.firebase.sign_in_provider === 'google.com'
+          ) {
             db.collection('users')
               .doc(authUser.uid)
               .set({
