@@ -8,50 +8,52 @@
       md="3"
       class="d-flex"
     >
-      <v-card class="mx-auto movieCard">
-        <div class="cardUpperPart">
-          <v-img
-            class="white--text align-end"
-            height="400"
-            :src="movie.Poster"
-          />
-          <like-button
-            v-if="user"
-            class="userActionButton _2ndFromRight"
-            :small="true"
-            :title="movie.Title"
-            :imdb-i-d="movie.imdbID"
-          />
-          <watchlist-button
-            v-if="user"
-            class="userActionButton"
-            :small="true"
-            :title="movie.Title"
-            :imdb-i-d="movie.imdbID"
-          />
-        </div>
-        <div class="text-center">
-          <v-btn
-            class="mt-3"
-            color="primary"
-            :to="{
-              name: 'details-id',
-              params: {
-                id: movie.imdbID,
-              },
-            }"
-            nuxt
-          >
-            View Details
-          </v-btn>
-        </div>
-        <v-card-subtitle class="pb-0">
-          {{ movie.Year }}
-        </v-card-subtitle>
-        <v-card-text class="text--primary">
-          <div>{{ movie.Title }}</div>
-        </v-card-text>
-      </v-card>
+      <v-lazy class="movieCard">
+        <v-card class="mx-auto">
+          <div class="cardUpperPart">
+            <v-img
+              class="white--text align-end"
+              height="400"
+              :src="movie.Poster"
+            />
+            <like-button
+              v-if="user"
+              class="userActionButton _2ndFromRight"
+              :small="true"
+              :title="movie.Title"
+              :imdb-i-d="movie.imdbID"
+            />
+            <watchlist-button
+              v-if="user"
+              class="userActionButton"
+              :small="true"
+              :title="movie.Title"
+              :imdb-i-d="movie.imdbID"
+            />
+          </div>
+          <div class="text-center">
+            <v-btn
+              class="mt-3"
+              color="primary"
+              :to="{
+                name: 'details-id',
+                params: {
+                  id: movie.imdbID,
+                },
+              }"
+              nuxt
+            >
+              View Details
+            </v-btn>
+          </div>
+          <v-card-subtitle class="pb-0">
+            {{ movie.Year }}
+          </v-card-subtitle>
+          <v-card-text class="text--primary">
+            <div>{{ movie.Title }}</div>
+          </v-card-text>
+        </v-card>
+      </v-lazy>
     </v-col>
   </v-row>
 </template>
