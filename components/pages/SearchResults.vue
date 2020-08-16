@@ -8,8 +8,8 @@
       md="3"
       class="d-flex"
     >
-      <v-lazy class="movieCard">
-        <v-card class="mx-auto">
+      <v-lazy class="mx-auto movieCard d-flex">
+        <v-card>
           <div class="cardUpperPart">
             <v-img
               class="white--text align-end"
