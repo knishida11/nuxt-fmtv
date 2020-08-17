@@ -4,11 +4,11 @@
       v-for="movie in searchResults"
       :key="movie.imdbID"
       cols="12"
-      sm="6"
-      md="3"
-      class="d-flex"
+      sm="4"
+      lg="3"
+      class="d-sm-flex"
     >
-      <v-lazy class="mx-auto movieCard d-flex">
+      <v-lazy class="mx-auto movieCard d-sm-flex">
         <v-card>
           <div class="cardUpperPart">
             <v-img
@@ -82,7 +82,7 @@ export default {
 
 <style lang="scss" scoped>
 .movieCard {
-  width: 90%;
+  width: 100%;
 
   @media (min-width: 600px) {
     width: 100%;
