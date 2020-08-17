@@ -1,5 +1,6 @@
 # FMTV(Nuxt.js)
-![fmtv-nuxt](https://user-images.githubusercontent.com/37486662/90230426-80ef3180-de54-11ea-821d-749391f7e5b0.jpg)
+![fmtv-nuxt-1](https://user-images.githubusercontent.com/37486662/90354773-34d70380-e085-11ea-9151-f4e7b41c1d02.jpg)
+![fmtv-nuxt-2](https://user-images.githubusercontent.com/37486662/90354794-47e9d380-e085-11ea-9758-a68d15b4073d.jpg)
 
 ## URL
 
@@ -11,6 +12,7 @@ https://nuxt-fmtv.web.app/
 - Vuetify.js
 - SCSS
 - Firebase
+- [OMDb API](http://www.omdbapi.com/)
 
 ## Description
 
@@ -19,8 +21,8 @@ You can get movies & TV shows data from [IMDb](https://www.imdb.com/), and save 
 This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/fmtv) and [movie-info](https://github.com/knishida11/movie-info).
 
 このアプリでは映画情報を[IMDb](https://www.imdb.com/)から検索することができ、<br>
-また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(Google認証によるログインが必要です)<br>
-このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv) と [movie-info](https://github.com/knishida11/movie-info)の後継アプリです。<br>
+また、自分の好きな映画とドラマを自分のリストに保存しておくことができます。(ログインが必要です)<br>
+このアプリは私が以前作成した[FMTV (Vue CLI)](https://github.com/knishida11/fmtv)と[movie-info](https://github.com/knishida11/movie-info)の後継アプリです。<br>
 日本語検索には非対応です。(情報を[OMDb API](https://www.imdb.com/)から取得していますが、そちらが英語のみの為)
 
 ## Features
@@ -29,7 +31,7 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 You can create your own page to share your likes and watch lists with others.<br>
 ユニークページを作成して他のユーザーに自分のリストを共有することができます。<br>
 
-For example https://nuxt-fmtv.web.app/knishida
+For example(例) https://nuxt-fmtv.web.app/knishida
 
 ### Search
 You can get movies and TV shows information from [IMDb](https://www.imdb.com/).<br>
