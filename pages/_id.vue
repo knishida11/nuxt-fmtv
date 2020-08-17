@@ -11,7 +11,9 @@
           <thead>
             <tr>
               <th class="text-left">
-                Likes
+                Likes ( Total:
+                {{ likes.length }}
+                )
               </th>
               <th class="text-left table_header_imdb">
                 IMDb
@@ -56,7 +58,9 @@
           <thead>
             <tr>
               <th class="text-left">
-                Watchlist
+                Watchlist ( Total:
+                {{ likes.length }}
+                )
               </th>
               <th class="text-left table_header_imdb">
                 IMDb
