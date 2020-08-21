@@ -16,11 +16,11 @@
           <v-col cols="12" sm="4" offset-sm="4">
             <v-text-field
               v-model="email"
-              class="pt-0 mt-0"
-              :rules="emailRules"
               label="E-mail"
               required
-              @keyup="resetError"
+              :error-messages="emailErrors"
+              @input="$v.email.$touch()"
+              @blur="$v.email.$touch()"
             />
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
@@ -29,10 +29,11 @@
               :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
               :type="passwordShow ? 'text' : 'password'"
               class="pt-0 mt-0"
-              :rules="passwordRules"
               label="Password"
               required
-              @keyup="resetError"
+              :error-messages="passwordErrors"
+              @input="$v.password.$touch()"
+              @blur="$v.password.$touch()"
               @click:append="passwordShow = !passwordShow"
             />
           </v-col>
@@ -42,7 +43,7 @@
             </p>
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
-            <v-btn color="primary" type="submit" :disabled="!valid">
+            <v-btn color="primary" type="submit" @click="submit">
               <v-icon class="mr-1">
                 mdi-email-outline
               </v-icon>
@@ -62,8 +63,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { validationMixin } from 'vuelidate'
+import { required, email, minLength } from 'vuelidate/lib/validators'
 export default {
   name: 'Login',
+  mixins: [validationMixin],
+  validations: {
+    email: { required, email },
+    password: { required, minLength: minLength(6) },
+  },
   data() {
     return {
       error: null,
@@ -71,15 +79,25 @@ export default {
       email: '',
       password: '',
       passwordShow: false,
-      emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-      passwordRules: [(v) => !!v || 'Password is required'],
     }
   },
   computed: {
     ...mapGetters('user', ['user']),
+    emailErrors() {
+      const errors = []
+      if (!this.$v.email.$dirty) return errors
+      !this.$v.email.email && errors.push('Must be valid e-mail')
+      !this.$v.email.required && errors.push('E-mail is required')
+      return errors
+    },
+    passwordErrors() {
+      const errors = []
+      if (!this.$v.password.$dirty) return errors
+      !this.$v.password.required && errors.push('Password is required')
+      !this.$v.password.minLength &&
+        errors.push('Passwords must be at least 6 characters long')
+      return errors
+    },
   },
   watch: {
     user() {
@@ -89,8 +107,8 @@ export default {
     },
   },
   methods: {
-    resetError() {
-      this.error = null
+    submit() {
+      this.$v.$touch()
     },
     googleLogin() {
       const googleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider()
@@ -105,9 +123,6 @@ export default {
         .catch((error) => {
           this.error = error
         })
-    },
-    validate() {
-      this.$refs.form.validate()
     },
   },
 }
