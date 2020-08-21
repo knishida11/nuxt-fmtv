@@ -71,6 +71,7 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
     [
       '@nuxtjs/firebase',
       {
@@ -100,6 +101,11 @@ export default {
       },
     ],
   ],
+  styleResources: {
+    scss: [
+      '~/assets/scss/_mixins.scss',
+    ]
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
