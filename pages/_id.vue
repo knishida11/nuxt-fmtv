@@ -171,7 +171,7 @@ export default {
 .table_header_imdb {
   width: 10%;
 
-  @media (min-width: 600px) {
+  @include vuetifySmall {
     width: auto;
   }
 }

@@ -196,8 +196,8 @@ export default {
 
 <style lang="scss" scoped>
 .settings {
-  @media (min-width: 600px) {
-    position: absolute;
+  @include vuetifySmall {
+    osition: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -208,7 +208,7 @@ export default {
 .input_box {
   width: 70%;
 
-  @media (min-width: 600px) {
+  @include vuetifySmall {
     width: 75%;
   }
 
@@ -220,7 +220,7 @@ export default {
 .change_button_box {
   width: 30%;
 
-  @media (min-width: 600px) {
+  @include vuetifySmall {
     width: 25%;
   }
 

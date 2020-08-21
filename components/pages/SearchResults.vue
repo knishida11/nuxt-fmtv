@@ -82,9 +82,9 @@ export default {
 
 <style lang="scss" scoped>
 .movieCard {
-  width: 100%;
+  width: 95%;
 
-  @media (min-width: 600px) {
+  @include vuetifySmall {
     width: 100%;
   }
 }

@@ -1,0 +1,7 @@
+$vuetify_breakpoint_small: 600px;
+
+@mixin vuetifySmall {
+  @media screen and (min-width: $vuetify_breakpoint_small) {
+    @content;
+  }
+}
