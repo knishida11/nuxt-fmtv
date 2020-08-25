@@ -7,15 +7,17 @@
             <v-text-field
               v-model.trim="displayName"
               class="pt-0 mt-0"
-              :rules="displayNameRules"
               label="Display Name"
               required
-              @keyup="resetError"
+              :error-messages="displayNameErrors"
+              @input="$v.displayName.$touch()"
+              @blur="$v.displayName.$touch()"
             />
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
             <v-text-field
-              v-model="email"
+              v-model.trim="email"
+              class="pt-0 mt-0"
               label="E-mail"
               required
               :error-messages="emailErrors"
@@ -25,7 +27,7 @@
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
             <v-text-field
-              v-model="password"
+              v-model.trim="password"
               :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
               :type="passwordShow ? 'text' : 'password'"
               class="pt-0 mt-0"
@@ -36,11 +38,6 @@
               @blur="$v.password.$touch()"
               @click:append="passwordShow = !passwordShow"
             />
-          </v-col>
-          <v-col v-if="error" cols="12" sm="4" offset-sm="4">
-            <p class="red lighten-1 px-2 py-2 white--text">
-              {{ error }}
-            </p>
           </v-col>
           <v-col cols="12" sm="4" offset-sm="4">
             <v-btn color="primary" type="submit" :disabled="!valid">
@@ -69,6 +66,7 @@ export default {
   name: 'Create',
   mixins: [validationMixin],
   validations: {
+    displayName: { required },
     email: { required, email },
     password: { required, minLength: minLength(6) },
   },
@@ -84,6 +82,12 @@ export default {
   },
   computed: {
     ...mapGetters('user', ['user']),
+    displayNameErrors() {
+      const errors = []
+      if (!this.$v.displayName.$dirty) return errors
+      !this.$v.displayName.required && errors.push('Display Name is required')
+      return errors
+    },
     emailErrors() {
       const errors = []
       if (!this.$v.email.$dirty) return errors
@@ -108,9 +112,6 @@ export default {
     },
   },
   methods: {
-    resetError() {
-      this.error = null
-    },
     async createAccount() {
       try {
         const userCredentials = await this.$fireAuth.createUserWithEmailAndPassword(
