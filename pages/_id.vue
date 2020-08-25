@@ -12,7 +12,7 @@
             <tr>
               <th class="text-left">
                 Likes ( Total:
-                {{ likes.length }}
+                {{ numLikes }}
                 )
               </th>
               <th class="text-left table_header_imdb">
@@ -59,7 +59,7 @@
             <tr>
               <th class="text-left">
                 Watchlist ( Total:
-                {{ likes.length }}
+                {{ numWatchlist }}
                 )
               </th>
               <th class="text-left table_header_imdb">
@@ -112,6 +112,14 @@ export default {
       likes: [],
       watchlist: [],
     }
+  },
+  computed: {
+    numLikes() {
+      return this.likes.length
+    },
+    numWatchlist() {
+      return this.watchlist.length
+    },
   },
   created() {
     this.$fireStore
