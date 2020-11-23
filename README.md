@@ -31,7 +31,7 @@ This is the successor to my apps [FMTV (Vue CLI)](https://github.com/knishida11/
 You can create your own page to share your likes and watch lists with others.<br>
 ユニークページを作成して他のユーザーに自分のリストを共有することができます。<br>
 
-For example(例) https://nuxt-fmtv.web.app/knishida
+For example(例) https://nuxt-fmtv.web.app/shrokno
 
 ### Search
 You can get movies and TV shows information from [IMDb](https://www.imdb.com/).<br>
